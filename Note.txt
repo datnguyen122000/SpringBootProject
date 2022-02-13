@@ -1,0 +1,8 @@
+Các account có trong db (có thể đăng nhập mà k phân biệt hoa thương ví dụ như dAtNq30 vẫn đc):
++DatNQ30 123
++VuongNQ68	123
+
+
+@ResponseBody: là convert từ server về dạng json hoặc xml
+@ResponseStatus: để trả về mã code phù hợp 
+API khi thêm sửa xóa thì đồng thời cx sẽ thêm sửa xóa vào db
