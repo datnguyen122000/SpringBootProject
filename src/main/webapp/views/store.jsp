@@ -422,7 +422,7 @@
 									</div>
 									<div class="add-to-cart">
 										<button class="add-to-cart-btn">
-											<i class="fa fa-shopping-cart"></i> add to cart
+											<i class="fa fa-shopping-cart"></i><a href="add-to-cart?id=${o.id }">add to cart</a> 
 										</button>
 									</div>
 								</div>

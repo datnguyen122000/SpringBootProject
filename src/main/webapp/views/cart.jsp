@@ -207,11 +207,8 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="breadcrumb-header">Regular Page</h3>
-					<ul class="breadcrumb-tree">
-						<li><a href="#">Home</a></li>
-						<li class="active">Blank</li>
-					</ul>
+					<h3 class="breadcrumb-header">Bill</h3>
+
 				</div>
 			</div>
 			<!-- /row -->
@@ -225,7 +222,29 @@
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
-			<div class="row"></div>
+			<div class="row">
+
+				<table border="1">
+					<tr>
+						<th>ID</th>
+						<th>Product</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Total price</th>
+					</tr>
+					<c:forEach var="o" items="${order.itemDTOs }">
+						<tr>
+							<td>${o.productDTO.id}</td>
+							<td>${o.productDTO.name}</td>
+							<td>${o.number}</td>
+							<td>${o.productDTO.price}</td>
+							<td>${o.productDTO.price*o.number}</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<span>Total : ${total }</span><br>
+				<button><a href="<%=request.getContextPath() %>/store">Back</a></button>
+			</div>
 			<!-- /row -->
 		</div>
 		<!-- /container -->

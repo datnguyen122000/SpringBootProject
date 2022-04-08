@@ -1,5 +1,6 @@
 package com.example.Project.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,6 +17,7 @@ public class CategoryDTO {
 	//đổi "status" trong postman thành "trạng_thái". Thuộc tính này để cx đc mà k để cx đc nếu k để thì mặc định nó là tên gốc (status)
 	@JsonProperty(value="trạng_thái")
 	private int status;
+	private Date createdDate;
 	private List<ProductDTO> productDTOs;
 
 	public List<ProductDTO> getProductDTOs() {
@@ -35,6 +37,16 @@ public class CategoryDTO {
 		this.id = id;
 		this.name = name;
 		this.status = status;
+	}
+
+	
+	public CategoryDTO(int id, String name, int status, Date createdDate, List<ProductDTO> productDTOs) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.status = status;
+		this.createdDate = createdDate;
+		this.productDTOs = productDTOs;
 	}
 
 	public int getId() {
@@ -61,9 +73,21 @@ public class CategoryDTO {
 		this.status = status;
 	}
 
+	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 	@Override
 	public String toString() {
-		return "CategoryDTO [id=" + id + ", name=" + name + ", status=" + status + "]";
+		return "CategoryDTO [id=" + id + ", name=" + name + ", status=" + status + ", createdDate=" + createdDate
+				+ ", productDTOs=" + productDTOs + "]";
 	}
+
+	
 
 }

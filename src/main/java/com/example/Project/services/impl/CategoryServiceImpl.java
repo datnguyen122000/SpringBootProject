@@ -1,6 +1,8 @@
 package com.example.Project.services.impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private BrandService brandService;
-	
+
 	@Autowired
 	private ImgService imgService;
 
@@ -58,14 +60,14 @@ public class CategoryServiceImpl implements CategoryService {
 				productDTO.setBrand(brandService.getBrand(p.getBrand().getId()));
 				productDTO.setCategory(getCategory(p.getCategory().getId()));
 				productDTO.setImg(imgService.getImage(p.getImage().getId()));
-				
+
 				productDTOs.add(productDTO);
 
 			}
 			categoryDTO.setProductDTOs(productDTOs);
 
 			categoryDTOs.add(categoryDTO);
-			
+
 		}
 
 		return categoryDTOs;
@@ -98,6 +100,11 @@ public class CategoryServiceImpl implements CategoryService {
 		Category category = new Category();
 		category.setName(categoryDTO.getName());
 		category.setStatus(1);
+		
+		Date date = new Date();
+		Timestamp timestamp = new Timestamp(date.getTime());
+		category.setCreatedDate(timestamp);
+		
 		categoryDao.addCategory(category);
 	}
 

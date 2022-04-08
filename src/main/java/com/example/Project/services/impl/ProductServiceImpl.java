@@ -123,4 +123,15 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	@Override
+	public ProductDTO getById(int id) {
+		// TODO Auto-generated method stub
+		Product product=productRepository.getById(id);
+		ProductDTO productDTO =modelMapper.map(product, ProductDTO.class);
+		return productDTO;
+		
+	}
+	
+	
+
 }

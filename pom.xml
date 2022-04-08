@@ -94,6 +94,14 @@
 			<version>2.4.2</version>
 		</dependency>
 
+		<!-- Gửi mail cho khi đăng kí tài khoản mới -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.2.0.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

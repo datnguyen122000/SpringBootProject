@@ -1,5 +1,9 @@
 package com.example.Project.entities;
 
+
+
+
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "category")
@@ -46,6 +52,9 @@ public class Category {
 //	nhớ là cascade chỉ hoạt động theo chiều: thay đổi gì trong bảng giữ khóa chính thì những bảng còn reference tới nó sẽ thay đổi theo, chứ phải thay đổi trong bảng con (bảng giữ khóa phụ) thì bảng cha (bảng giữ khóa chính) thay đổi theo nên khi đó nó sẽ báo lỗi "child row hay child column gì đó"
 	private List<Product> products;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="created_date")
+	private Date createdDate;
 	public Category() {
 		super();
 	}
@@ -66,6 +75,16 @@ public class Category {
 		this.id = id;
 		this.name = name;
 		this.status = status;
+	}
+	
+
+	public Category(int id, String name, int status, List<Product> products, Date createdDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.status = status;
+		this.products = products;
+		this.createdDate = createdDate;
 	}
 
 	public int getId() {
@@ -99,10 +118,23 @@ public class Category {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+	
+	
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", status=" + status + "]";
+		return "Category [id=" + id + ", name=" + name + ", status=" + status + ", products=" + products
+				+ ", createdDate=" + createdDate + "]";
 	}
+
+	
 
 }

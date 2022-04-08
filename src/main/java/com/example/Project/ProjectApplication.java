@@ -34,8 +34,9 @@ public class ProjectApplication extends WebSecurityConfigurerAdapter {
 		.antMatchers("/test2").permitAll()
 		.antMatchers("/category-management/danh-sach-category").permitAll()
 		.antMatchers("/category-management/them-category").permitAll()
-		//tài khoản có role là ADMIN mới được login vào category-management/categories những role khác thì k được truy cập vào
+		//tài khoản có role là ADMIN mới được login vào category-management/categories,swagger những role khác thì k được truy cập vào
 		.antMatchers("/category-management/categories").hasAnyRole("ADMIN")
+		.antMatchers("/swagger").hasAnyRole("ADMIN")
 		.anyRequest().authenticated().and()
 		//cửa sổ login mặc định
 //		.httpBasic();
@@ -49,7 +50,7 @@ public class ProjectApplication extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		//cấu hình không cần xác thực cho những đường dẫn này
-		web.ignoring().antMatchers("/css/**","/js/**","/img/**","/fonts/**"); //cái này ạ e de y duong dan. no bat dau /css, chu ko co /category-mângement
+		web.ignoring().antMatchers("/css/**","/js/**","/img/**","/fonts/**","/Image/**"); //cái này ạ e de y duong dan. no bat dau /css, chu ko co /category-mângement
 		
 	}
 	

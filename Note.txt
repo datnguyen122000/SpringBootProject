@@ -1,8 +1,28 @@
 Các account có trong db (có thể đăng nhập mà k phân biệt hoa thương ví dụ như dAtNq30 vẫn đc):
-+DatNQ30 123
++DatNQ30 123  
 +VuongNQ68	123
+Chỉ có tài khoản DatNQ30 mới có quyền truy cập vào swagger
 
 
 @ResponseBody: là convert từ server về dạng json hoặc xml
 @ResponseStatus: để trả về mã code phù hợp 
 API khi thêm sửa xóa thì đồng thời cx sẽ thêm sửa xóa vào db
+
+Dùng swagger thì dùng thêm dependence này (Chỉ có tài khoản DatNQ30 mới có quyền truy cập vào swagger)
+<!-- tao doc gi do -->
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.11</version>
+		</dependency>
+		
+Để dùng spring mail thì đầu tiền tạo copy dependence dưới đây
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.2.0.RELEASE</version>
+		</dependency>
+-vào cấu hình trong file application.properties	tạo MessageDTO	
+-Tạo lớp EmailService

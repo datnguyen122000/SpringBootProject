@@ -17,7 +17,7 @@ public class TestDataController {
 	@GetMapping("/test")
 	public String getData() {
 		System.out.println(accountDao.findByUsername("DatNQ30"));
-		return "";
+		return "blank3";
 	}
 	
 	@GetMapping("/test2")
