@@ -53,7 +53,7 @@ public class StoreController {
 	@PostMapping("/search")
 	public String search(HttpServletRequest request,@RequestParam(name="txtSearch", required = false) String txtSearch) {
 		List<ProductDTO> productDTOs=productService.productSearch(txtSearch);
-		System.out.println(productDTOs.toString());
+		request.setAttribute("productDTOs", productDTOs);
 		return "store";
 	}
 	

@@ -136,8 +136,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDTO> productSearch(String txtSearch) {
 		// TODO Auto-generated method stub
-		List<Product> productSearch=productRepository.findByNameLike(txtSearch);
-		
+		List<Product> productSearch=productRepository.search("%"+txtSearch+"%");
+		System.out.println(txtSearch);
 		List<ProductDTO> productDTOSearch=new ArrayList<ProductDTO>();
 		for (Product p : productSearch) {
 			ProductDTO productDTO =modelMapper.map(p, ProductDTO.class);
