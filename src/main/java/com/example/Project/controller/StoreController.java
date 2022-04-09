@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Project.model.CategoryDTO;
@@ -48,4 +49,12 @@ public class StoreController {
 		
 		return "store";
 	}
+	
+	@PostMapping("/search")
+	public String search(HttpServletRequest request,@RequestParam(name="txtSearch", required = false) String txtSearch) {
+		List<ProductDTO> productDTOs=productService.productSearch(txtSearch);
+		System.out.println(productDTOs.toString());
+		return "store";
+	}
+	
 }

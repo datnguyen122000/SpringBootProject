@@ -1,6 +1,7 @@
 package com.example.Project.services.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -130,6 +131,19 @@ public class ProductServiceImpl implements ProductService {
 		ProductDTO productDTO =modelMapper.map(product, ProductDTO.class);
 		return productDTO;
 		
+	}
+
+	@Override
+	public List<ProductDTO> productSearch(String txtSearch) {
+		// TODO Auto-generated method stub
+		List<Product> productSearch=productRepository.findByNameLike(txtSearch);
+		
+		List<ProductDTO> productDTOSearch=new ArrayList<ProductDTO>();
+		for (Product p : productSearch) {
+			ProductDTO productDTO =modelMapper.map(p, ProductDTO.class);
+			productDTOSearch.add(productDTO);
+		}
+		return productDTOSearch;
 	}
 	
 	

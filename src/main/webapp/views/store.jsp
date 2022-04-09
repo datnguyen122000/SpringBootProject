@@ -83,13 +83,13 @@
 					<!-- SEARCH BAR -->
 					<div class="col-md-6">
 						<div class="header-search">
-							<form>
+							<form method="post" action="<%=request.getContextPath() %>/search">
 								<select class="input-select">
 									<option value="0">All Categories</option>
 									<c:forEach items="${categoriesActice }" var="o">
 										<option value="${o.id }">${o.name }</option>
 									</c:forEach>
-								</select> <input class="input" placeholder="Search here">
+								</select> <input class="input" placeholder="Search here" name="txtSearch">
 								<button class="search-btn">Search</button>
 							</form>
 						</div>

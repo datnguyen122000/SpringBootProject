@@ -11,4 +11,5 @@ public interface CategoryService {
 	public void addCategory(CategoryDTO categoryDTO);
 	public List<CategoryDTO> getAllActiveCategories();
 	public CategoryDTO getCategory(int id);
+	
 }

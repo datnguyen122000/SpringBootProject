@@ -6,11 +6,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.Project.dao.AccountDao;
+import com.example.Project.repository.CategoryRepository;
+import com.example.Project.repository.ProductRepository;
 
 @Controller
 public class TestDataController {
 	@Autowired
 	AccountDao accountDao;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -22,7 +30,10 @@ public class TestDataController {
 	
 	@GetMapping("/test2")
 	public String testCode() {
+		// k test đc kiểu này
+//		System.out.println(productRepository.findByName("Trẻ em 1"));
+		System.out.println(categoryRepository.findAll().toString());
 		System.out.println(bCryptPasswordEncoder.encode("123"));
-		return "";
+		return "blank3";
 	}
 }

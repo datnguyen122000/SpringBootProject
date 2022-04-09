@@ -10,4 +10,5 @@ public interface ProductService {
 	public void updateProduct(ProductDTO productDTO);
 	public List<ProductDTO> getAllProduct();
 	public ProductDTO getById(int id);
+	public List<ProductDTO> productSearch(String txtSearch);
 }
