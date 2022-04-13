@@ -11,4 +11,5 @@ import com.example.Project.entities.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p WHERE p.name like :txtSearch or p.detail like :txtSearch or p.description like :txtSearch ")
     List<Product> search(@Param("txtSearch") String txtSearch);
+    
 }

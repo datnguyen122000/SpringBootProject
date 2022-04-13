@@ -37,16 +37,33 @@ public class StoreController {
 	
 	@GetMapping("/store")
 	public String storePage(HttpServletRequest request) {
+		int pageSize=9;// số lượng sản phẩm trong một trang
 //		UserDetails userDetails=(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		request.setAttribute("username", userDetails.getUsername());
-		
+		int offset=0;
+		//offset là số page bắt đầu (tính từ 0)
+		if(request.getParameter("offset")!=null) {
+			offset=Integer.parseInt(request.getParameter("offset"))-1;
+		}
+		System.out.println(offset);
 		request.setAttribute("username", "dat");
 		List<CategoryDTO> categoriesActice= categoryService.getAllActiveCategories();
 		request.setAttribute("categoriesActice", categoriesActice);
 		
-		List<ProductDTO> productDTOs=productService.getAllProduct();
-		request.setAttribute("productDTOs", productDTOs);
+		List<ProductDTO> productDTOAll=productService.getAllProduct();
+		int numProduct=productDTOAll.size();
+		int numPage=numProduct/pageSize;
+		if(numProduct%pageSize!=0) {
+			numPage++;
+		}
 		
+		List<ProductDTO> productDTOs=productService.productByPaging(offset, pageSize);
+		System.out.println(productDTOs);
+		request.setAttribute("productDTOs", productDTOs);
+		request.setAttribute("numPage", numPage);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("offset", offset);
+		System.out.println(offset);
 		return "store";
 	}
 	

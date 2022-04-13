@@ -83,7 +83,8 @@
 					<!-- SEARCH BAR -->
 					<div class="col-md-6">
 						<div class="header-search">
-							<form method="post" action="<%=request.getContextPath() %>/search">
+							<form method="post"
+								action="<%=request.getContextPath()%>/search">
 								<select class="input-select">
 									<option value="0">All Categories</option>
 									<c:forEach items="${categoriesActice }" var="o">
@@ -390,16 +391,15 @@
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
-										<img src="<%=request.getContextPath() %>/Image/${o.img.name }" alt="">
+										<img src="<%=request.getContextPath() %>/Image/${o.img.name }"
+											alt="">
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name">
 											<a href="#">${o.name }</a>
 										</h3>
-										<h4 class="product-price">
-											$${o.price }
-										</h4>
+										<h4 class="product-price">$${o.price }</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 												class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -422,7 +422,8 @@
 									</div>
 									<div class="add-to-cart">
 										<button class="add-to-cart-btn">
-											<i class="fa fa-shopping-cart"></i><a href="add-to-cart?id=${o.id }">add to cart</a> 
+											<i class="fa fa-shopping-cart"></i><a
+												href="add-to-cart?id=${o.id }">add to cart</a>
 										</button>
 									</div>
 								</div>
@@ -437,13 +438,27 @@
 
 					<!-- store bottom filter -->
 					<div class="store-filter clearfix">
-						<span class="store-qty">Showing 20-100 products</span>
+						<span class="store-qty">Showing ${pageSize } products</span>
 						<ul class="store-pagination">
-							<li class="active">1</li>
+							<c:forEach var="i" begin="1" end="${numPage }">
+								<li class="${offset==i-1?'active':'' }"><a
+									href="<%=request.getContextPath() %>/store?offset=${i}">${i }</a></li>
+							</c:forEach>
+							<c:if test="${offset+1!=numPage }">
+								<li><a
+									href="<%=request.getContextPath() %>/store?offset=${offset+2}"><i
+										class="fa fa-angle-right"></i></a></li>
+							</c:if>
+							<c:if test="${offset+1==numPage }">
+								<li><a
+									href="#"><i
+										class="fa fa-angle-right"></i></a></li>
+							</c:if>
+							<!--<li class="active">1</li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							<li><a href="#"><i class="fa fa-angle-right"></i></a></li> -->
 						</ul>
 					</div>
 					<!-- /store bottom filter -->

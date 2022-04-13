@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -144,6 +146,18 @@ public class ProductServiceImpl implements ProductService {
 			productDTOSearch.add(productDTO);
 		}
 		return productDTOSearch;
+	}
+
+	@Override
+	public List<ProductDTO> productByPaging(int offset, int pageSize) {
+		Page<Product> productsPage=productRepository.findAll(PageRequest.of(offset, pageSize));
+		List<Product> products=productsPage.toList();
+		List<ProductDTO> productDTOs=new ArrayList<ProductDTO>();
+		for (Product p : products) {
+			ProductDTO productDTO =modelMapper.map(p, ProductDTO.class);
+			productDTOs.add(productDTO);
+		}
+		return productDTOs;
 	}
 	
 	
